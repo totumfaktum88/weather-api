@@ -26,4 +26,8 @@ class Data extends Model
     protected $casts = [
         "datetime" => "datetime"
     ];
+
+    public function scopeLast24Hours($query) {
+        $query->where("datetime", ">", now()->subDay());
+    }
 }

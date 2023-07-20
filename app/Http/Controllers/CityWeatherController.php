@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CityWeatherResource;
+use App\Http\Resources\WeatherDataResource;
 use App\Models\City;
 use Illuminate\Http\Request;
 
@@ -11,8 +11,8 @@ class CityWeatherController extends Controller
     public function index(Request $request, $city) {
         $city = City::query()->where("name", $city)->firstOrFail();
 
-        return CityWeatherResource::collection(
-            $city->weatherData()->where("datetime", ">", now()->subDay())->get()
+        return WeatherDataResource::collection(
+            $city->weatherData()->Last24Hours()->get()
         );
     }
 }

@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("city-weather/{city}", [\App\Http\Controllers\CityWeatherController::class, "index"]);
+Route::get("weather-data", [\App\Http\Controllers\WeatherDataController::class, "index"]);
